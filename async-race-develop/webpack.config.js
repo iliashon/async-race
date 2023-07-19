@@ -3,6 +3,7 @@ const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index.ts'),
     mode: 'development',
@@ -12,6 +13,13 @@ const baseConfig = {
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(jpg|png|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'images/[name].[ext]'
+                },
             },
         ],
     },
